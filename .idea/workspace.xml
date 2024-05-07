@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce30d90c-f008-4f0e-9d33-d9aa055a3e3d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/visualizations.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanclub-dashbaord/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/fanclub-dashbaord/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanclub-dashbaord/src/Components/DataDisplay.js" beforeDir="false" afterPath="$PROJECT_DIR$/fanclub-dashbaord/src/Components/DataDisplay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/visualizations.py" beforeDir="false" afterPath="$PROJECT_DIR$/visualizations.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +45,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python.cars-1.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
@@ -70,11 +69,15 @@
       <workItem from="1714367424813" duration="135000" />
       <workItem from="1714367699201" duration="2236000" />
       <workItem from="1714884799207" duration="25000" />
-      <workItem from="1714884880021" duration="4594000" />
+      <workItem from="1714884880021" duration="6149000" />
+      <workItem from="1715057744800" duration="3221000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Fan_Club$cars_1.coverage" NAME="cars-1 Coverage Results" MODIFIED="1715051060116" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../../../CST383/Week2" />
   </component>
 </project>

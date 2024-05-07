@@ -1,18 +1,19 @@
 import matplotlib.pyplot as plt
 
-def plot_disk_usage(disk_data):
-    """Creates a pie chart for disk usage data."""
+def plot_disk_usage(disk_data, output_path):
+    #disk usage
     labels = ['Free Space', 'Used Space']
-    sizes = [disk_data['Free Space'], disk_data['Used Space']]
+    sizes = [disk_data['free'], disk_data['used']]
 
     plt.figure(figsize=(6, 6))
     plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140)
     plt.axis('equal')
     plt.title('Disk Usage Breakdown')
-    plt.show()
+    plt.savefig(output_path)
+    plt.close()
 
-def plot_memory_usage(memory_data):
-    """Creates a pie chart for memory usage data."""
+def plot_memory_usage(memory_data, output_path):
+# memory piechart
     labels = ['Used Memory', 'Available Memory']
     sizes = [memory_data['used'], memory_data['available']]
 
@@ -20,33 +21,16 @@ def plot_memory_usage(memory_data):
     plt.pie(sizes, labels=labels, autopct='%1.1f%%', startangle=140)
     plt.axis('equal')
     plt.title('Memory Usage Breakdown')
-    plt.show()
+    plt.savefig(output_path)
+    plt.close()
 
-def plot_cpu_usage(cpu_usage):
-    """Creates a gauge-like bar plot to represent CPU usage."""
+def plot_cpu_usage(cpu_usage, output_path):
+    #cpu bar
     plt.figure(figsize=(8, 4))
     plt.barh(['CPU Usage'], [cpu_usage], color='blue')
-    plt.xlim(0, 100)  # Assuming CPU usage is a percentage value (0-100)
+    plt.xlim(0, 100)
     plt.xlabel('Percentage (%)')
     plt.title('Current CPU Usage')
-    plt.show()
+    plt.savefig(output_path)
+    plt.close()
 
-# Example usage
-if __name__ == "__main__":
-    # Example data
-    example_disk_data = {
-        'Free Space': 743525101568,
-        'Used Space': 10244407296
-    }
-
-    example_memory_data = {
-        'used': 16451059712,
-        'available': 17034035200
-    }
-
-    example_cpu_usage = 11.8
-
-    # Call visualizations
-    plot_disk_usage(example_disk_data)
-    plot_memory_usage(example_memory_data)
-    plot_cpu_usage(example_cpu_usage)
