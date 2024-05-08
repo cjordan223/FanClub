@@ -1,35 +1,14 @@
 // App.js
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import DataVisualization from './Components/DataVisualization';  // Adjust path as needed
 
-function DataDisplay() {
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const result = await axios('http://localhost:5065/data');
-                setData(result.data);
-            } catch (error) {
-                console.error('Error fetching data:', error);
-            }
-        };
-        fetchData();
-    }, []);
-
+function App() {
     return (
         <div>
-            <h1>Data from Flask</h1>
-            <ul>
-                {data.map((item, index) => (
-                    <li key={index}>
-                        Hostname: {item.host_name}, IP Address: {item.ip_address},
-                        RAM Size: {item.ram_size}, Storage: {item.storage_amount}
-                    </li>
-                ))}
-            </ul>
+            <h1>Cybersecurity Monitoring Dashboard</h1>
+            <DataVisualization />
         </div>
     );
 }
 
-export default DataDisplay;
+export default App;
