@@ -29,7 +29,7 @@ def send_data():
     # Include additional system metrics
     data.update(get_system_metrics())
 
-    response = requests.post('http://0.0.0.0:5065/data', json=data)
+    response = requests.post('http://192.168.0.19:5065/data', json=data)
     print(response.text)
 
 if __name__ == "__main__":
