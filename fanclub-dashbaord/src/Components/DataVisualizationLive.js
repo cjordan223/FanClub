@@ -42,6 +42,9 @@ const DataVisualizationLive = () => {
     const memoryUsed = metrics.map((m) => m.memory?.used || 0);
     const networkSent = metrics.map((m) => m.network?.bytes_sent || 0);
     const networkReceived = metrics.map((m) => m.network?.bytes_recv || 0);
+    const downloadSpeeds = metrics.map((m) => m.internet_speed?.download_speed_mbps || 0);
+    const uploadSpeeds = metrics.map((m) => m.internet_speed?.upload_speed_mbps || 0);
+    const pingLatencies = metrics.map((m) => m.internet_speed?.ping_ms || 0);
 
     // Chart data
     const cpuLineChartData = {
@@ -86,6 +89,36 @@ const DataVisualizationLive = () => {
         ],
     };
 
+    const downloadUploadChartData = {
+        labels: timestamps,
+        datasets: [
+            {
+                label: 'Download Speed (Mbps)',
+                data: downloadSpeeds,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                fill: false,
+            },
+            {
+                label: 'Upload Speed (Mbps)',
+                data: uploadSpeeds,
+                borderColor: 'rgba(54, 162, 235, 1)',
+                fill: false,
+            },
+        ],
+    };
+
+    const pingLatencyChartData = {
+        labels: timestamps,
+        datasets: [
+            {
+                label: 'Ping Latency (ms)',
+                data: pingLatencies,
+                borderColor: 'rgba(255, 99, 132, 1)',
+                fill: false,
+            },
+        ],
+    };
+
     return (
         <div>
             <h2>Live System Monitoring Data</h2>
@@ -103,6 +136,16 @@ const DataVisualizationLive = () => {
             <div style={chartContainerStyle}>
                 <h3>Network Usage Over Time</h3>
                 <Line data={networkLineChartData} />
+            </div>
+
+            <div style={chartContainerStyle}>
+                <h3>Internet Download/Upload Speeds</h3>
+                <Line data={downloadUploadChartData} />
+            </div>
+
+            <div style={chartContainerStyle}>
+                <h3>Ping Latency Over Time</h3>
+                <Line data={pingLatencyChartData} />
             </div>
         </div>
     );

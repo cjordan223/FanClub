@@ -91,7 +91,7 @@ def collect_metrics():
             print(f"Error sending data to {FLASK_URL}: {e}")
 
         # Interval between each data collection
-        time.sleep(5)
+        time.sleep(1)
 
 if __name__ == "__main__":
     collect_metrics()
