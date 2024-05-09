@@ -5,12 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce30d90c-f008-4f0e-9d33-d9aa055a3e3d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/fanclub-dashbaord/src/Components/DataVisualization.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fanclub-dashbaord/src/Components/DataVisualizationLive.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/livedata.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fanclub-dashbaord/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/fanclub-dashbaord/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fanclub-dashbaord/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/fanclub-dashbaord/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fanclub-dashbaord/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/fanclub-dashbaord/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fanclub-dashbaord/src/Components/DataDisplay.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fanclub-dashbaord/src/Components/DataVisualization.js" beforeDir="false" afterPath="$PROJECT_DIR$/fanclub-dashbaord/src/Components/DataVisualization.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +82,7 @@
       <workItem from="1714884880021" duration="6149000" />
       <workItem from="1715057744800" duration="4767000" />
       <workItem from="1715144262890" duration="2337000" />
-      <workItem from="1715150705064" duration="5258000" />
+      <workItem from="1715150705064" duration="15773000" />
     </task>
     <servers />
   </component>

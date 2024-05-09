@@ -1,25 +1,51 @@
+// DataVisualization.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import {
+    Chart as ChartJS,
+    LineElement,
+    BarElement,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    Title,
+    Tooltip,
+    Legend,
+} from 'chart.js';
 import { Line, Bar } from 'react-chartjs-2';
+
+// Register the necessary components with Chart.js
+ChartJS.register(
+    LineElement,
+    BarElement,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    Title,
+    Tooltip,
+    Legend
+);
 
 const DataVisualization = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        // Ensure the server address matches your server's IP and port.
         axios.get('http://192.168.0.19:5065/api/data')
             .then((response) => setData(response.data))
             .catch((error) => console.error('Error fetching data:', error));
     }, []);
 
-    // Check for undefined fields and provide fallback values
-    const timestamps = data.map(item => item.timestamp || 'Unknown');
-    const cpuUsages = data.map(item => (item.raw_data?.cpu_usage) ?? 0);
-    const memoryUsed = data.map(item => (item.raw_data?.memory?.used) ?? 0);
-    const memoryTotal = data.map(item => (item.raw_data?.memory?.total) ?? 0);
-    const diskUsed = data.map(item => (item.raw_data?.disk?.used) ?? 0);
-    const diskTotal = data.map(item => (item.raw_data?.disk?.total) ?? 0);
+    // Extract specific metrics for visualization
+    const timestamps = data.map(item => item.timestamp);
+    const cpuUsages = data.map(item => item.raw_data.cpu_usage);
+    const memoryUsed = data.map(item => item.raw_data.memory?.used || 0);
+    const memoryTotal = data.map(item => item.raw_data.memory?.total || 0);
 
+    // Access network data directly
+    const bytesSent = data.map(item => item.raw_data.network?.bytes_sent || 0);
+    const bytesReceived = data.map(item => item.raw_data.network?.bytes_recv || 0);
+
+    // Chart data
     const cpuLineChartData = {
         labels: timestamps,
         datasets: [
@@ -43,13 +69,13 @@ const DataVisualization = () => {
         ],
     };
 
-    const diskBarChartData = {
-        labels: ['Used', 'Total'],
+    const networkBarChartData = {
+        labels: ['Bytes Sent', 'Bytes Received'],
         datasets: [
             {
-                label: 'Disk (Bytes)',
-                data: [diskUsed[0] || 0, diskTotal[0] || 0],
-                backgroundColor: ['rgba(153, 102, 255, 0.6)', 'rgba(255, 159, 64, 0.6)'],
+                label: 'Network (Bytes)',
+                data: [bytesSent[0] || 0, bytesReceived[0] || 0],
+                backgroundColor: ['rgba(255, 205, 86, 0.6)', 'rgba(75, 192, 192, 0.6)'],
             },
         ],
     };
@@ -75,8 +101,8 @@ const DataVisualization = () => {
             </div>
 
             <div style={chartContainerStyle}>
-                <h3>Disk Usage</h3>
-                <Bar data={diskBarChartData} />
+                <h3>Network Usage</h3>
+                <Bar data={networkBarChartData} />
             </div>
         </div>
     );
