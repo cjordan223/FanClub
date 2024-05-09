@@ -1,7 +1,7 @@
 // App.js
 import React from 'react';
 import DataVisualization from './Components/DataVisualization';
-import DataVisualizationLive from "./Components/DataVisualizationLive";  // Adjust path as needed
+import DataVisualizationLive from "./Components/DataVisualizationLive";
 
 function App() {
     return (

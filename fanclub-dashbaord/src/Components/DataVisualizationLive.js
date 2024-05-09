@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import { Line } from 'react-chartjs-2';
-import 'chartjs-plugin-annotation';
 
 // Initialize WebSocket connection
 const socket = io('http://localhost:5066');
@@ -28,6 +27,7 @@ const DataVisualizationLive = () => {
     useEffect(() => {
         // Listen to live updates from WebSocket
         socket.on('live_update', (data) => {
+            console.log('Received WebSocket Data:', data); // Log WebSocket data
             setMetrics((prevMetrics) => {
                 const updatedMetrics = [...prevMetrics, ...data]; // Append new data
                 // Limit to the last 15 data points
@@ -73,67 +73,17 @@ const DataVisualizationLive = () => {
         datasets: [
             {
                 label: 'Network Bytes Sent',
-                data: networkSent.map(formatBytes), // Format the bytes
+                data: networkSent,
                 borderColor: 'rgba(54, 162, 235, 1)',
                 fill: false,
             },
             {
                 label: 'Network Bytes Received',
-                data: networkReceived.map(formatBytes),
+                data: networkReceived,
                 borderColor: 'rgba(255, 205, 86, 1)',
                 fill: false,
             },
         ],
-    };
-
-    // Options with annotation and contextual information
-    const cpuOptions = {
-        scales: {
-            y: {
-                suggestedMax: 100,
-                ticks: {
-                    callback: (value) => `${value}%`, // Display values as percentages
-                },
-            },
-        },
-        plugins: {
-            annotation: {
-                annotations: {
-                    warning: {
-                        type: 'line',
-                        yMin: 80,
-                        yMax: 80,
-                        borderColor: 'orange',
-                        borderWidth: 2,
-                        label: {
-                            content: 'Warning Level (80%)',
-                            enabled: true,
-                            position: 'start',
-                        },
-                    },
-                },
-            },
-        },
-    };
-
-    const memoryOptions = {
-        scales: {
-            y: {
-                ticks: {
-                    callback: (value) => formatBytes(value), // Format memory values
-                },
-            },
-        },
-    };
-
-    const networkOptions = {
-        scales: {
-            y: {
-                ticks: {
-                    callback: (value) => formatBytes(value), // Format network values
-                },
-            },
-        },
     };
 
     return (
@@ -142,17 +92,17 @@ const DataVisualizationLive = () => {
 
             <div style={chartContainerStyle}>
                 <h3>CPU Usage Over Time</h3>
-                <Line data={cpuLineChartData} options={cpuOptions} />
+                <Line data={cpuLineChartData} />
             </div>
 
             <div style={chartContainerStyle}>
                 <h3>Memory Usage Over Time</h3>
-                <Line data={memoryLineChartData} options={memoryOptions} />
+                <Line data={memoryLineChartData} />
             </div>
 
             <div style={chartContainerStyle}>
                 <h3>Network Usage Over Time</h3>
-                <Line data={networkLineChartData} options={networkOptions} />
+                <Line data={networkLineChartData} />
             </div>
         </div>
     );
